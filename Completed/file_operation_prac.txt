@@ -1,0 +1,1 @@
+{'alep': 1, 'bet': 2, 'gimmel': 3, 'dalet': 4}
