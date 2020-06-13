@@ -14,8 +14,8 @@ vowels = {
 
 
 class Consonants:
-    def __init__(self, consonants: dict) -> object:
-        self.consonants = list(consonants.keys())
+    def __init__(self, params):
+        raise NotImplementedError
 
 
 class Vowels:
