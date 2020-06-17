@@ -1,0 +1,17 @@
+{
+    "a": [
+        "open",
+        "central",
+        "unrounded"
+    ],
+    "i": [
+        "close",
+        "front",
+        "unrounded"
+    ],
+    "u": [
+        "close",
+        "back",
+        "rounded"
+    ]
+}
