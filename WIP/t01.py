@@ -27,6 +27,18 @@ def pickrandom(d, n) -> str:
     return "".join(choices(d, k=n))
 
 
+def save(path, dictionary):
+    import json
+    with open(path, "w") as f:
+        json.dump(dictionary, f, indent=4)
+
+
+def load(path) -> dict:
+    import json
+    with open(path, "r") as f:
+        return json.load(f)
+
+
 consonants = {
     "p": ["voiceless", "bilabial", "stop"],
     "f": ["voiceless", "labiodental", "fricative"],
@@ -47,3 +59,7 @@ vowels = {
     "i": ["close", "front", "unrounded"],
     "u": ["close", "back", "rounded"],
 }
+
+phonemes = {
+    "consoants": consonants,
+    "vowels": vowels, }
