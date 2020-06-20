@@ -3,7 +3,8 @@
         "p": [
             "voiceless",
             "bilabial",
-            "stop"
+            "stop",
+            "elongable"
         ],
         "f": [
             "voiceless",
@@ -13,12 +14,19 @@
         "t": [
             "voiceless",
             "dental",
-            "plosive"
+            "plosive",
+            "elongable"
         ],
         "s": [
             "voiceless",
             "dental",
             "fricative"
+        ],
+        "k": [
+            "voiceless",
+            "velar",
+            "plosive",
+            "elongable"
         ],
         "h": [
             "voiceless",

@@ -45,7 +45,7 @@ def save(path: str, dictionary: dict):
         json.dump(dictionary, f, indent=4)
 
 
-def load(path, /, data) -> dict:
+def load(path) -> dict:
     import json
     with open(path, "r") as f:
         return json.load(f)
