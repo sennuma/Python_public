@@ -1,39 +1,49 @@
-class Consonants:
-    def __init__(self, consonants: dict):
-        self.d = consonants
+# class Consonants:
+#     def __init__(self, consonants: dict):
+#         self.d = consonants
 
-    def save(self, destination):
-        import json
+#     def save(self, destination):
+#         import json
 
-        pass
+#         pass
 
-    def load(self, destination):
-        import json
+#     def load(self, destination):
+#         import json
 
-        pass
+#         pass
 
-    def search(self, conditions: set) -> list:
-        return []
+#     def search(self, conditions: set) -> list:
+#         return []
 
-    def pickrandom(self, num=1) -> str:
-        from random import choice
+#     def pickrandom(self, num=1) -> str:
+#         from random import choice
 
-        return str([])
+#         return str([])
+
+path = r"./lang1/lang1.json"
 
 
-def pickrandom(d, n) -> str:
+def choice_conditioned(s: dict, c: set, n: int) -> str:
+    from random import choice
+    result = []
+    for _ in range(n):
+        result.append(choice([x for x in s if c < set(s[x])]))
+    return "".join(result)
+
+
+def pickrandom(lst, n) -> str:
     from random import choices
 
-    return "".join(choices(d, k=n))
+    return "".join(choices(lst, k=n))
 
 
-def save(path, dictionary):
+def save(path: str, dictionary: dict):
     import json
     with open(path, "w") as f:
         json.dump(dictionary, f, indent=4)
 
 
-def load(path) -> dict:
+def load(path, /, data) -> dict:
     import json
     with open(path, "r") as f:
         return json.load(f)
