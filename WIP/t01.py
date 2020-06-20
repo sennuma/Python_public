@@ -20,10 +20,11 @@
 
 #         return str([])
 
-path = r"./lang1/lang1.json"
+lang1_path = r".\\lang1\\lang1.json"
 
 
 def choice_conditioned(s: dict, c: set, n: int) -> str:
+    """returns n-sized string under the given condition (c) from s (dictionary)."""
     from random import choice
     result = []
     for _ in range(n):
@@ -31,10 +32,11 @@ def choice_conditioned(s: dict, c: set, n: int) -> str:
     return "".join(result)
 
 
-def pickrandom(lst, n) -> str:
+def pickrandom(seq, n=1) -> str:
+    raise NotImplementedError  # Bug found, fix needed
     from random import choices
 
-    return "".join(choices(lst, k=n))
+    return "".join(choices(seq, k=n))
 
 
 def save(path: str, dictionary: dict):
@@ -50,10 +52,11 @@ def load(path, /, data) -> dict:
 
 
 consonants = {
-    "p": ["voiceless", "bilabial", "stop"],
+    "p": ["voiceless", "bilabial", "stop", "elongable"],
     "f": ["voiceless", "labiodental", "fricative"],
-    "t": ["voiceless", "dental", "plosive"],
+    "t": ["voiceless", "dental", "plosive", "elongable"],
     "s": ["voiceless", "dental", "fricative"],
+    "k": ["voiceless", "velar", "plosive", "elongable"],
     "h": ["voiceless", "glottal", "fricative"],
     "w": ["voiced", "bilabial", "approximant"],
     "m": ["voiced", "bilabial", "nasal"],
