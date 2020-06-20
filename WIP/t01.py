@@ -24,7 +24,7 @@ lang1_path = r".\\lang1\\lang1.json"
 
 
 def choice_conditioned(s: dict, c: set, n: int) -> str:
-    """returns n-sized string under the given condition (c) from s (dictionary)."""
+    """returns n sized string under the given condition (c) from s."""
     from random import choice
     result = []
     for _ in range(n):
@@ -33,7 +33,10 @@ def choice_conditioned(s: dict, c: set, n: int) -> str:
 
 
 def pickrandom(seq, n=1) -> str:
-    raise NotImplementedError  # Bug found, fix needed
+    try:
+        seq = list(seq)
+    except TypeError as e:
+        print(e)
     from random import choices
 
     return "".join(choices(seq, k=n))
