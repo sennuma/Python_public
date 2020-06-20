@@ -16,11 +16,11 @@ def load_direct(path: str) -> dict:
 
 
 def save_dictionary_with_set(dest: str, dictionary: dict):
-    pass
+    raise NotImplementedError
 
 
 def load_dictionary_values_as_set(path: str) -> dict:
-    pass
+    raise NotImplementedError
 
 
 def convert_values_to_set(d: dict):
@@ -50,6 +50,6 @@ def pick_random(seq, n=1) -> str:
     return "".join(choices(seq, k=n))
 
 
-phonemes = load(lang1_path)
+phonemes = load_direct(lang1_path)
 consonants = phonemes["consonants"]
 vowels = phonemes["vowels"]
