@@ -1,29 +1,7 @@
-# class Consonants:
-#     def __init__(self, consonants: dict):
-#         self.d = consonants
-
-#     def save(self, destination):
-#         import json
-
-#         pass
-
-#     def load(self, destination):
-#         import json
-
-#         pass
-
-#     def search(self, conditions: set) -> list:
-#         return []
-
-#     def pickrandom(self, num=1) -> str:
-#         from random import choice
-
-#         return str([])
-
 lang1_path = r".\\lang1\\lang1.json"
 
 
-def choice_conditioned(s: dict, c: set, n: int) -> str:
+def pick_conditioned(s: dict, c: set, n: int) -> str:
     """returns n sized string under the given condition (c) from s."""
     from random import choice
     result = []
@@ -32,23 +10,25 @@ def choice_conditioned(s: dict, c: set, n: int) -> str:
     return "".join(result)
 
 
-def pickrandom(seq, n=1) -> str:
+def pick_random(seq, n=1) -> str:
+    from random import choices
     try:
         seq = list(seq)
     except TypeError as e:
         print(e)
-    from random import choices
 
     return "".join(choices(seq, k=n))
 
 
-def save(path: str, dictionary: dict):
+def save(dest: str, dictionary: dict):
+    """facilitates dumping Python dict into json"""
     import json
-    with open(path, "w") as f:
+    with open(dest, "w") as f:
         json.dump(dictionary, f, indent=4)
 
 
 def load(path) -> dict:
+    """facilitates loading json for Python dict"""
     import json
     with open(path, "r") as f:
         return json.load(f)
