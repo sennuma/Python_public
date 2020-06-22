@@ -19,6 +19,7 @@ def save(destination: str, dictionary: dict, mode="d"):
     """mode:
         d -> directly dumps dictionary into json
         c -> convert values as set into them as list and dumps into json"""
+    raise NotImplementedError
     validmodes = {"d", "c"}
     import json
     assert set(mode) < validmodes
