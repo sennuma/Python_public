@@ -1,4 +1,5 @@
 lang1_path = r".\\lang1\\lang1.json"
+lang2_path = r".\\lang1\\lang2.json"
 
 
 def save_direct(dest: str, dictionary: dict):
@@ -9,6 +10,20 @@ def save_direct(dest: str, dictionary: dict):
         json.dump(dictionary, f, indent=4)
 
 
+def save_dictionary_with_set(dest: str, dictionary: dict):
+    # WIP: not available if set is embeded outside of the initial values
+    save_direct(dest, {k: list(dictionary[k]) for k in dictionary})
+
+
+def save(destination: str, dictionary: dict, mode="d"):
+    """mode:
+        d -> directly dumps dictionary into json
+        c -> convert values as set into them as list and dumps into json"""
+    validmodes = {"d", "c"}
+    import json
+    assert set(mode) < validmodes
+
+
 def load_direct(path: str) -> dict:
     """facilitates loading json into Python dict"""
     import json
@@ -17,12 +32,8 @@ def load_direct(path: str) -> dict:
         return json.load(f)
 
 
-def save_dictionary_with_set(dest: str, dictionary: dict):
-    import json
-
-
 def load_dictionary_values_as_set(path: str) -> dict:
-    import json
+    return {k: set(load_direct(path)[k]) for k in load_direct(path)}
 
 
 def convert_values_to_set(d: dict):
@@ -55,5 +66,5 @@ def pick_random(seq, n=1) -> str:
 
 
 phonemes = load_direct(lang1_path)
-consonants = phonemes["consonants"]
-vowels = phonemes["vowels"]
+consonants = convert_values_to_set(phonemes["consonants"])
+vowels = convert_values_to_set(phonemes["vowels"])
