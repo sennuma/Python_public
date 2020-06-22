@@ -15,7 +15,7 @@ def save_dictionary_with_set(dest: str, dictionary: dict):
     save_direct(dest, {k: list(dictionary[k]) for k in dictionary})
 
 
-def save(destination: str, dictionary: dict, mode="d"):
+def save(dest: str, dictionary: dict, mode="d"):
     """mode:
         d -> directly dumps dictionary into json
         c -> convert values as set into them as list and dumps into json"""
