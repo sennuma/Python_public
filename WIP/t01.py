@@ -2,6 +2,12 @@ lang1_path = r".\\lang1\\lang1.json"
 lang2_path = r".\\lang1\\lang2.json"
 
 
+def outer(d: dict):
+    def inner():
+        return d.__iter__()
+    return inner()
+
+
 def save_direct(dest: str, dictionary: dict):
     """facilitates dumping Python dict into json"""
     import json
