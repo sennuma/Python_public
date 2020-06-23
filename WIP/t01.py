@@ -2,10 +2,8 @@ lang1_path = r".\\lang1\\lang1.json"
 lang2_path = r".\\lang1\\lang2.json"
 
 
-def outer(d: dict):
-    def inner():
-        return d.__iter__()
-    return inner()
+def isdictinside(dictionary):
+    pass
 
 
 def save_direct(dest: str, dictionary: dict):
@@ -25,10 +23,13 @@ def save(dest: str, dictionary: dict, mode="d"):
     """mode:
         d -> directly dumps dictionary into json
         c -> convert values as set into them as list and dumps into json"""
-    raise NotImplementedError
     import json
     validmodes = {"d", "c"}
     assert set(mode) < validmodes
+    if mode == "d":
+        save_direct(dest, dictionary)
+    elif mode == "c":
+        save_dictionary_with_set(dest, dictionary)
 
 
 def load_direct(path: str) -> dict:
@@ -72,6 +73,11 @@ def pick_random(seq, n=1) -> str:
     return "".join(choices(seq, k=n))
 
 
+def generate_word(phonemes, data, num):
+    pass
+
+
 phonemes = load_direct(lang1_path)
 consonants = convert_values_to_set(phonemes["consonants"])
 vowels = convert_values_to_set(phonemes["vowels"])
+syllable_structure = "ccvcc"
