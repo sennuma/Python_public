@@ -1,0 +1,70 @@
+{
+    "p": [
+        "stop",
+        "bilabial",
+        "voiceless",
+        "elongable"
+    ],
+    "f": [
+        "fricative",
+        "voiceless",
+        "labiodental"
+    ],
+    "t": [
+        "dental",
+        "voiceless",
+        "elongable",
+        "plosive"
+    ],
+    "s": [
+        "fricative",
+        "dental",
+        "voiceless"
+    ],
+    "k": [
+        "velar",
+        "voiceless",
+        "elongable",
+        "plosive"
+    ],
+    "h": [
+        "fricative",
+        "glottal",
+        "voiceless"
+    ],
+    "w": [
+        "bilabial",
+        "approximant",
+        "voiced"
+    ],
+    "m": [
+        "bilabial",
+        "nasal",
+        "voiced"
+    ],
+    "b": [
+        "bilabial",
+        "voiced",
+        "plosive"
+    ],
+    "n": [
+        "dental",
+        "nasal",
+        "voiced"
+    ],
+    "d": [
+        "dental",
+        "voiced",
+        "plosive"
+    ],
+    "j": [
+        "approximant",
+        "palatal",
+        "voiced"
+    ],
+    "g": [
+        "velar",
+        "voiced",
+        "plosive"
+    ]
+}
