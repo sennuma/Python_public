@@ -24,6 +24,7 @@ def save(dest: str, dictionary: dict, mode="d"):
         d -> directly dumps dictionary into json
         c -> convert values as set into them as list and dumps into json"""
     import json
+
     validmodes = {"d", "c"}
     assert set(mode) < validmodes
     if mode == "d":
@@ -80,4 +81,3 @@ def generate_word(phonemes, data, num):
 phonemes = load_direct(lang1_path)
 consonants = convert_values_to_set(phonemes["consonants"])
 vowels = convert_values_to_set(phonemes["vowels"])
-syllable_structure = "ccvcc"
