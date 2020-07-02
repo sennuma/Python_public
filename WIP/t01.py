@@ -2,8 +2,23 @@ lang1_path = r".\\lang1\\lang1.json"
 lang2_path = r".\\lang1\\lang2.json"
 
 
-def isdictinside(dictionary):
-    pass
+# completely for a test; cuz it prints.
+def t_findset(dictionary):
+    for d in dictionary:
+        if type(dictionary[d]) == dict:
+            t_findset(dictionary[d])
+        elif type(dictionary[d]) == set:
+            print(f"found a set, {d} with {dictionary[d]}")
+            continue
+        elif type(dictionary[d]) == list or tuple:
+            print(f"found {dictionary[d]} to be {type(dictionary[d])} at {d}")
+            continue
+        elif type(dictionary[d]) == str or int or bool or float:
+            print(f"found {dictionary[d]} tobe {type(dictionary[d])}")
+            continue
+        else:
+            print(f"idk what it is, {dictionary[d]}")
+            continue
 
 
 def save_direct(dest: str, dictionary: dict):
@@ -24,6 +39,7 @@ def save(dest: str, dictionary: dict, mode="d"):
         d -> directly dumps dictionary into json
         c -> convert values as set into them as list and dumps into json"""
     import json
+
     validmodes = {"d", "c"}
     assert set(mode) < validmodes
     if mode == "d":
@@ -80,4 +96,3 @@ def generate_word(phonemes, data) -> str:
 phonemes = load_direct(lang1_path)
 consonants = convert_values_to_set(phonemes["consonants"])
 vowels = convert_values_to_set(phonemes["vowels"])
-syllable_structure = "ccvcc"
