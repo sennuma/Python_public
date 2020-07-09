@@ -84,12 +84,12 @@ def pick_random(seq, n=1) -> str:
     try:
         seq = list(seq)
     except TypeError as e:
-        print(e)
+        raise e
 
     return "".join(choices(seq, k=n))
 
 
-def generate_word(phonemes, data, num):
+def generate_word(phonemes, data) -> str:
     pass
 
 
