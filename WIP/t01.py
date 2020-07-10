@@ -1,25 +1,20 @@
 lang1_path = r".\\lang1\\lang1.json"
 lang2_path = r".\\lang1\\lang2.json"
+from json import dumps, loads, JSONEncoder, JSONDecoder
+import pickle
 
+#WIP
+class PythonSetEncoder(JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, set):
+            return {'_python_set': pickle.dumps(obj)}
+        return JSONEncoder.default(self, obj)
 
-# completely for a test; cuz it prints.
-def t_findset(dictionary):
-    for d in dictionary:
-        if type(dictionary[d]) == dict:
-            t_findset(dictionary[d])
-        elif type(dictionary[d]) == set:
-            print(f"found a set, {d} with {dictionary[d]}")
-            continue
-        elif type(dictionary[d]) == list or tuple:
-            print(f"found {dictionary[d]} to be {type(dictionary[d])} at {d}")
-            continue
-        elif type(dictionary[d]) == str or int or bool or float:
-            print(f"found {dictionary[d]} tobe {type(dictionary[d])}")
-            continue
-        else:
-            print(f"idk what it is, {dictionary[d]}")
-            continue
-
+#WIP
+def as_python_set(dct):
+    if "_python_set" in dct:
+        return pickle.loads(dct["_python_set"])
+    return dct
 
 def save_direct(dest: str, dictionary: dict):
     """facilitates dumping Python dict into json"""
