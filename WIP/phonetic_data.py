@@ -28,6 +28,8 @@ low = "low"
 front = "front"
 centre = center = "centre"
 back = "back"
+rounded = "rounded"
+unrounded = "unrounded"
 
 height = {high, mid, low}
 frontness = {front, centre, back}

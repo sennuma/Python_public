@@ -1,7 +1,3 @@
-import json
-from collections import OrderedDict
-import pprint
-
 consonants = {
     "p": ["voiceless", "bilabial", "stop"],
     "f": ["voiceless", "labiodental", "fricative"],

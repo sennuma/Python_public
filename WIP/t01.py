@@ -1,20 +1,23 @@
+from json import JSONEncoder
+import pickle
 lang1_path = r".\\lang1\\lang1.json"
 lang2_path = r".\\lang1\\lang2.json"
-from json import dumps, loads, JSONEncoder, JSONDecoder
-import pickle
 
-#WIP
+
+# WIP
 class PythonSetEncoder(JSONEncoder):
     def default(self, obj):
         if isinstance(obj, set):
             return {'_python_set': pickle.dumps(obj)}
         return JSONEncoder.default(self, obj)
 
-#WIP
+
+# WIP
 def as_python_set(dct):
     if "_python_set" in dct:
         return pickle.loads(dct["_python_set"])
     return dct
+
 
 def save_direct(dest: str, dictionary: dict):
     """facilitates dumping Python dict into json"""
@@ -33,7 +36,6 @@ def save(dest: str, dictionary: dict, mode="d"):
     """mode:
         d -> directly dumps dictionary into json
         c -> convert values as set into them as list and dumps into json"""
-    import json
 
     validmodes = {"d", "c"}
     assert set(mode) < validmodes
