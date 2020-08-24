@@ -2,7 +2,8 @@ params = dict(obstrunt_coda=True,
               head_left=True,
               null_subject=True,
               null_onset=True,
-              NP_left=False)
+              NP_left=False,
+              consonant_cluster=False)
 
 vowels = {
     "a": {"unrounded", "open", "back"},
@@ -12,7 +13,6 @@ vowels = {
     "o": {"rounded", "mid", "back"},
 }
 
-# %%
 consonants = {
     "k": {"voiceless", "velar", "plosive"},
     "g": {"voiced", "velar", "plosive"},
@@ -29,7 +29,7 @@ consonants = {
     "r": {"voiced", "alveolar", "tap"},
     "w": {"voiced", "bilabial", "approximant"},
 }
-# %%
+
 obstrunt = {"plosive", "fricative"}
 
 
@@ -39,7 +39,21 @@ def create_set_from_dict(condition: set, sourcedict: dict) -> set:
     return {k for k in sourcedict if condition <= sourcedict[k]}
 
 
-def generate_phonetic_array(vowels: dict, consonants: dict,
-                            params: dict) -> list:
-    assert type(vowels) == dict
-    assert type(consonants) == dict
+# def naive_generate_phonetic_array(vowels: dict, consonants: dict,
+#                                   params: dict) -> str:
+#     assert type(vowels) == dict
+#     assert type(consonants) == dict
+#     assert type(params) == dict
+
+#     # variables
+#     vowels = create_set_from_dict({}, vowels)
+#     consonants = create_set_from_dict({}, consonants)
+#     if "null_onset" in params:
+#         consonants.add("")
+#     array = list()
+
+#     from random import sample
+#     array.append(str(sample(consonants, 1)))
+#     array.append(str(sample(vowels, 1)))
+#     array.append(str(sample(consonants, 1)))
+#     return "".join(array)
