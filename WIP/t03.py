@@ -28,32 +28,24 @@ consonants = {
     "y": {"voiced", "palatal", "approximant"},
     "r": {"voiced", "alveolar", "tap"},
     "w": {"voiced", "bilabial", "approximant"},
+    "": {None}
 }
 
 obstrunt = {"plosive", "fricative"}
 
 
-def create_set_from_dict(condition: set, sourcedict: dict) -> set:
-    assert type(sourcedict) == dict, "sourcedict should be a dictionary"
-    condition = set(condition)
-    return {k for k in sourcedict if condition <= sourcedict[k]}
+def dict_to_cherrypicked_list(src: dict, cond: set) -> list:
+    pass
 
 
-# def naive_generate_phonetic_array(vowels: dict, consonants: dict,
-#                                   params: dict) -> str:
-#     assert type(vowels) == dict
-#     assert type(consonants) == dict
-#     assert type(params) == dict
+def dict_to_cherrypicked_set(cond: set, src: dict) -> set:
+    assert type(src) == dict, "src should be a dictionary"
+    cond = set(cond)
+    return {k for k in src if cond <= src[k]}
 
-#     # variables
-#     vowels = create_set_from_dict({}, vowels)
-#     consonants = create_set_from_dict({}, consonants)
-#     if "null_onset" in params:
-#         consonants.add("")
-#     array = list()
 
-#     from random import sample
-#     array.append(str(sample(consonants, 1)))
-#     array.append(str(sample(vowels, 1)))
-#     array.append(str(sample(consonants, 1)))
-#     return "".join(array)
+def gen_phon_arr(consonants, vowels) -> str:
+    from random import choice
+    consonants = list(consonants)
+    vowels = list(vowels)
+    return choice(consonants) + choice(vowels) + choice(consonants)
