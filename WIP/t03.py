@@ -1,9 +1,12 @@
 params = dict(obstrunt_coda=True,
-              head_left=True,
+              head_initial=True,
               null_subject=True,
               null_onset=True,
-              NP_left=False,
-              consonant_cluster=False)
+              NP_initial=False,
+              ccluster=True,
+              ccluster_size=2,
+              vcluster=True,
+              vcluster_size=2)
 
 vowels = {
     "a": {"unrounded", "open", "back"},
@@ -44,8 +47,35 @@ def dict_to_cherrypicked_set(cond: set, src: dict) -> set:
     return {k for k in src if cond <= src[k]}
 
 
-def gen_phon_arr(consonants, vowels) -> str:
+def strised_sample(p, n_min: int, n_max: int) -> str:
+    """a function based on random.sample and random.randint"""
+    assert type(n_min) == int
+    assert type(n_max) == int
+    from random import randint as rint
+    from random import sample
+    return "".join(sample(p, rint(n_min, n_max))[:])
+
+
+def gen_phon_arr01(c, v) -> str:
+    """c for consonants, v for vowels.\n
+    returns a string that consists of a random choice from given c and v."""
     from random import choice
-    consonants = list(consonants)
-    vowels = list(vowels)
-    return choice(consonants) + choice(vowels) + choice(consonants)
+    c = list(c)
+    v = list(v)
+    return choice(c) + choice(v) + choice(c)
+
+
+def gen_phon_arr02(c, v, cond) -> str:
+    """c, v, and cond stand for consonants, vowels and condition respectively.\n
+    returns a string that consists of a random choices from given c and v.
+    the number of choices from c or v depends on
+    cond[ccluster_size] and cond[vcsluter_size] respectively."""
+    assert type(cond) == dict
+    c, v = list(c), list(v)
+    csize, vsize = 1, 1
+    if cond["ccluster"]:
+        csize = cond["ccluster_size"]
+    if cond["vcluster"]:
+        vsize = cond["vcluster_size"]
+    return strised_sample(c, 1, csize) + strised_sample(
+        v, 1, vsize) + strised_sample(c, 1, csize)
