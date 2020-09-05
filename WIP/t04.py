@@ -7,22 +7,32 @@ class Phonemes:
 
 class Syllable:
     """aka PhoneticArray"""
-    def __init__(self, phonemes, condition):
+    def __init__(self, phonemes, conditions):
         self.phonemes = phonemes
-        self.condition = condition
+        self.conditions = conditions
 
-    def generate_simple_array(self) -> str:
+
+class Phonetic_array_generator:
+    def __init__(self, syllable):
+        assert isinstance(syllable, Syllable)
+        self.consonants = syllable.phonemes.consonants
+        self.vowels = syllable.phonemes.vowels
+        self.conditions = syllable.conditions
+
+    def gen_naive_single(self):
         from random import choice
-        return choice(self.phonemes.consonants) + choice(
-            self.phonemes.vowels) + choice(self.phonemes.consonants)
+        onset = choice(list(self.consonants))
+        necleus = choice(list(self.vowels))
+        coda = choice(list(self.consonants))
+        return onset + necleus + coda
 
-    def generate_complex_array(self) -> str:
-        onset = EqUtils.strsample(EqUtils, self.phonemes.consonants,
-                                  self.condition["ccluster_size"])
-        necleus = EqUtils.strsample(EqUtils, self.phonemes.vowels,
-                                    self.condition["vcluster_size"])
-        coda = EqUtils.strsample(EqUtils, self.phonemes.consonants,
-                                 self.condition["ccluster_size"])
+    def gen_naive_multiple(self):
+        onset = EqUtils.strsample(EqUtils, self.consonants,
+                                  self.conditions["ccluster_size"])
+        necleus = EqUtils.strsample(EqUtils, self.vowels,
+                                    self.conditions["vcluster_size"])
+        coda = EqUtils.strsample(EqUtils, self.consonants,
+                                 self.conditions["ccluster_size"])
         return onset + necleus + coda
 
 

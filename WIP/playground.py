@@ -1,5 +1,6 @@
 from t04 import Phonemes
 from t04 import Syllable
+from t04 import Phonetic_array_generator
 
 vowels = {
     "a": {"unrounded", "open", "back"},
@@ -16,13 +17,16 @@ consonants = {
     "z": {"voiced", "dental", "fricative"},
     "t": {"voiceless", "dental", "plosive"},
     "d": {"voiced", "dental", "plosive"},
+    "f": {"voiceless", "labiodental", "fricative"},
+    "v": {"voiced", "labiodental", "fricative"},
     "n": {"voiced", "dental", "nasal"},
     "h": {"voiceless", "glottal", "fricative"},
     "p": {"voiceless", "bilabial", "plosive"},
     "b": {"voiced", "bilabial", "plosive"},
     "m": {"voiced", "bilabial", "nasal"},
-    "y": {"voiced", "palatal", "approximant"},
+    "j": {"voiced", "palatal", "approximant"},
     "r": {"voiced", "alveolar", "tap"},
+    "R": {"voiced", "alveolar", "trill"},
     "w": {"voiced", "bilabial", "approximant"},
     "": {None}
 }
@@ -38,3 +42,4 @@ params = {
 
 phonemes = Phonemes(consonants, vowels)
 syllable = Syllable(phonemes, params)
+gentor = Phonetic_array_generator(syllable)
