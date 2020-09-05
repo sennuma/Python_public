@@ -1,15 +1,13 @@
-from json import JSONEncoder
 import pickle
 lang1_path = r".\\lang1\\lang1.json"
 lang2_path = r".\\lang1\\lang2.json"
 
-
 # WIP
-class PythonSetEncoder(JSONEncoder):
-    def default(self, obj):
-        if isinstance(obj, set):
-            return {'_python_set': pickle.dumps(obj)}
-        return JSONEncoder.default(self, obj)
+# class PythonSetEncoder(JSONEncoder):
+#     def default(self, obj):
+#         if isinstance(obj, set):
+#             return {'_python_set': pickle.dumps(obj)}
+#         return JSONEncoder.default(self, obj)
 
 
 # WIP
