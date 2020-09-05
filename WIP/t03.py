@@ -3,9 +3,7 @@ params = dict(obstrunt_coda=True,
               null_subject=True,
               null_onset=True,
               NP_initial=False,
-              ccluster=True,
               ccluster_size=2,
-              vcluster=True,
               vcluster_size=2)
 
 vowels = {
@@ -53,6 +51,8 @@ def strised_sample(p, n_min: int, n_max: int) -> str:
     assert type(n_max) == int
     from random import randint as rint
     from random import sample
+    p = list(p)
+
     return "".join(sample(p, rint(n_min, n_max))[:])
 
 
@@ -70,12 +70,14 @@ def gen_phon_arr02(c, v, cond) -> str:
     returns a string that consists of a random choices from given c and v.
     the number of choices from c or v depends on
     cond[ccluster_size] and cond[vcsluter_size] respectively."""
-    assert type(cond) == dict
+
     c, v = list(c), list(v)
-    csize, vsize = 1, 1
-    if cond["ccluster"]:
-        csize = cond["ccluster_size"]
-    if cond["vcluster"]:
-        vsize = cond["vcluster_size"]
+
+    csize, vsize = cond["ccluster_size"], cond["vcluster_size"]
+
     return strised_sample(c, 1, csize) + strised_sample(
         v, 1, vsize) + strised_sample(c, 1, csize)
+
+
+def gen_phon_arr03(c, v, cond) -> dict:
+    pass
