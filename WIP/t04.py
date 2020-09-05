@@ -27,24 +27,26 @@ class Phonetic_array_generator:
         return onset + necleus + coda
 
     def gen_naive_multiple(self):
-        onset = EqUtils.strsample(EqUtils, self.consonants,
+        onset = EqUtils.strsample(self.consonants,
                                   self.conditions["ccluster_size"])
-        necleus = EqUtils.strsample(EqUtils, self.vowels,
+        necleus = EqUtils.strsample(self.vowels,
                                     self.conditions["vcluster_size"])
-        coda = EqUtils.strsample(EqUtils, self.consonants,
+        coda = EqUtils.strsample(self.consonants,
                                  self.conditions["ccluster_size"])
         return onset + necleus + coda
 
 
 class EqUtils:
-    def strsample(self, p, b: int) -> str:
+    @staticmethod
+    def strsample(p, b: int) -> str:
         assert type(b) == int
         from random import randint as rint
         from random import sample
         p = list(p)
         return "".join(sample(p, (rint(1, b)))[:])
 
-    def cherrypick(self, cond, src: dict) -> list:
+    @staticmethod
+    def cherrypick(cond, src: dict) -> list:
         assert type(src) == dict
         cond = set(cond)
         return [k for k in src if cond <= src[k]]
