@@ -6,7 +6,6 @@ class Phonemes:
 
 
 class Syllable:
-    """aka PhoneticArray"""
     def __init__(self, phonemes, conditions):
         self.phonemes = phonemes
         self.conditions = conditions
