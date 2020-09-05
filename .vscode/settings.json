@@ -3,5 +3,7 @@
     "python.linting.flake8Enabled": true,
     "editor.formatOnPaste": true,
     "editor.formatOnType": true,
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "python.envFile": "$D:/Users/sennu/Documents/GitHub/Python_public/.env",
+    "python.autoComplete.extraPaths": ["./WIP"],
 }
