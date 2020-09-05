@@ -26,7 +26,7 @@ consonants = {
     "m": {"voiced", "bilabial", "nasal"},
     "j": {"voiced", "palatal", "approximant"},
     "r": {"voiced", "alveolar", "tap"},
-    "R": {"voiced", "alveolar", "trill"},
+    "l": {"voiced", "dental", "lateral approximant"},
     "w": {"voiced", "bilabial", "approximant"},
     "": {None}
 }
@@ -43,3 +43,8 @@ params = {
 phonemes = Phonemes(consonants, vowels)
 syllable = Syllable(phonemes, params)
 gentor = Phonetic_array_generator(syllable)
+
+lst = []
+for i in range(128):
+    lst.append(gentor.gen_naive_multiple())
+print(sorted(lst))
