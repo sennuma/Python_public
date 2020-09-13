@@ -1,10 +1,12 @@
-params = dict(obstrunt_coda=True,
-              head_initial=True,
-              null_subject=True,
-              null_onset=True,
-              NP_initial=False,
-              ccluster_size=2,
-              vcluster_size=2)
+params = dict(
+    obstrunt_coda=True,
+    head_initial=True,
+    null_subject=True,
+    null_onset=True,
+    NP_initial=False,
+    ccluster_size=2,
+    vcluster_size=2,
+)
 
 vowels = {
     "a": {"unrounded", "open", "back"},
@@ -29,7 +31,7 @@ consonants = {
     "y": {"voiced", "palatal", "approximant"},
     "r": {"voiced", "alveolar", "tap"},
     "w": {"voiced", "bilabial", "approximant"},
-    "": {None}
+    "": {None},
 }
 
 obstrunt = {"plosive", "fricative"}
@@ -51,6 +53,7 @@ def strised_sample(p, n_min: int, n_max: int) -> str:
     assert type(n_max) == int
     from random import randint as rint
     from random import sample
+
     p = list(p)
 
     return "".join(sample(p, rint(n_min, n_max))[:])
@@ -60,6 +63,7 @@ def gen_phon_arr01(c, v) -> str:
     """c for consonants, v for vowels.\n
     returns a string that consists of a random choice from given c and v."""
     from random import choice
+
     c = list(c)
     v = list(v)
     return choice(c) + choice(v) + choice(c)
@@ -75,8 +79,11 @@ def gen_phon_arr02(c, v, cond) -> str:
 
     csize, vsize = cond["ccluster_size"], cond["vcluster_size"]
 
-    return strised_sample(c, 1, csize) + strised_sample(
-        v, 1, vsize) + strised_sample(c, 1, csize)
+    return (
+        strised_sample(c, 1, csize)
+        + strised_sample(v, 1, vsize)
+        + strised_sample(c, 1, csize)
+    )
 
 
 def gen_phon_arr03(c, v, cond) -> dict:

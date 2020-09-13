@@ -32,7 +32,7 @@ heb_consonants = {
     "q": {"voiceless", "laryngael", "plosive"},
     "r": {"voiced", "dental", "trill"},
     "š": {"voiceless", "alveolar", "fricative"},
-    "t": {"voiced", "dental", "plosive"}
+    "t": {"voiced", "dental", "plosive"},
 }
 
 consonants = {
@@ -53,7 +53,7 @@ consonants = {
     "r": {"voiced", "alveolar", "tap"},
     "l": {"voiced", "dental", "lateral approximant"},
     "w": {"voiced", "bilabial", "approximant"},
-    "": {None}
+    "": {None},
 }
 
 params = {

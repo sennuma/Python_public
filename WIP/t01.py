@@ -1,4 +1,5 @@
 import pickle
+
 lang1_path = r".\\lang1\\lang1.json"
 lang2_path = r".\\lang1\\lang2.json"
 
@@ -32,8 +33,8 @@ def save_dictionary_with_set(dest: str, dictionary: dict):
 
 def save(dest: str, dictionary: dict, mode="d"):
     """mode:
-        d -> directly dumps dictionary into json
-        c -> convert values as set into them as list and dumps into json"""
+    d -> directly dumps dictionary into json
+    c -> convert values as set into them as list and dumps into json"""
 
     validmodes = {"d", "c"}
     assert set(mode) < validmodes

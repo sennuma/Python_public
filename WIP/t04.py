@@ -1,5 +1,6 @@
 class Phonemes:
     """aka PhoneticInventory"""
+
     def __init__(self, consonants, vowels):
         self.consonants = consonants
         self.vowels = vowels
@@ -20,18 +21,16 @@ class Phonetic_array_generator:
 
     def gen_naive_single(self):
         from random import choice
+
         onset = choice(list(self.consonants))
         necleus = choice(list(self.vowels))
         coda = choice(list(self.consonants))
         return onset + necleus + coda
 
     def gen_naive_multiple(self):
-        onset = EqUtils.strsample(self.consonants,
-                                  self.conditions["ccluster_size"])
-        necleus = EqUtils.strsample(self.vowels,
-                                    self.conditions["vcluster_size"])
-        coda = EqUtils.strsample(self.consonants,
-                                 self.conditions["ccluster_size"])
+        onset = EqUtils.strsample(self.consonants, self.conditions["ccluster_size"])
+        necleus = EqUtils.strsample(self.vowels, self.conditions["vcluster_size"])
+        coda = EqUtils.strsample(self.consonants, self.conditions["ccluster_size"])
         return onset + necleus + coda
 
 
@@ -41,6 +40,7 @@ class EqUtils:
         assert type(b) == int
         from random import randint as rint
         from random import sample
+
         p = list(p)
         return "".join(sample(p, (rint(1, b)))[:])
 

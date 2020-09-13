@@ -23,4 +23,3 @@ while 1:
     if d[0] == d[1] == 0:
         break
     buildboard(d)
-
