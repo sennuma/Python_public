@@ -1,6 +1,8 @@
 def checknum(x: int, i: int) -> bool:
     if x % 3 == 0:
         print(f" {x}", end="")
+        return True
+    return False
 
 
 def include3(x: int, i: int) -> bool:
