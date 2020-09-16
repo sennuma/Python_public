@@ -20,6 +20,7 @@ def missingcardfinder(cards: list) -> list:
 
 
 def missingcardprinter(cards: list) -> None:
+    cards.sort()
     for i in cards:
         if i > 39:
             print(f"D {i-39}")
