@@ -9,7 +9,8 @@ def riffle(cards: list) -> None:
 def cut(cards: list, s: int) -> list:
     f = list(cards[:s])
     b = list(cards[s:])
-    return b + f
+    cards.clear()
+    cards.extend(b + f)
 
 
 n = 2 * int(input())
@@ -18,7 +19,7 @@ m = int(input())
 for i in range(m):
     stdin = int(input())
     if stdin:
-        cards = cut(cards, stdin)
+        cut(cards, stdin)
     else:
         riffle(cards)
 
