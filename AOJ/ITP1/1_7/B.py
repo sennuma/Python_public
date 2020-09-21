@@ -1,4 +1,4 @@
-# src ~ https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/all/ITP1_7_C
+# src = https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/all/ITP1_7_C
 
 r, c = map(int, input().split())
 table = []
