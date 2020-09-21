@@ -1,20 +1,19 @@
-# src = https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/all/ITP1_7_C
+from itertools import combinations as comb
 
-r, c = map(int, input().split())
-table = []
-for i in range(r):
-    table.append(list(map(int, input().split())))
+data = []
+while 1:
+    n, x = map(int, input().split())
+    if n == x == 0:
+        break
+    data.append([n, x, 0])
 
-table.append([])
+for d in data:
+    nums = list(range(1, d[0] + 1))
+    c = list(comb(nums, 3))
+    for l in c:
+        if sum(l) == d[1]:
+            d[2] += 1
 
-for i in range(c):
-    sc = 0
-    for j in range(r):
-        sc += table[j][i]
-    table[-1].append(sc)
+for d in data:
+    print(d[2])
 
-for i in range(r + 1):
-    table[i].append(sum(table[i]))
-
-for row in table:
-    print(*row)
