@@ -1,0 +1,48 @@
+# 出典は https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/8/ITP1_8_A
+
+string モジュールから ascii_uppercase を import する
+string モジュールから ascii_lowercase を import する
+
+keyを大文字，valueを小文字とする辞書，ltcを宣言
+keyを小文字，valueを大文字とする辞書，ctlを宣言
+
+標準入力から受け取った文字列 stdin を宣言
+結果用の空文字列 r を宣言
+
+stdin の各要素 s について:
+    もし s が ctl のキーにあるならば：
+        r に 対応する小文字を追加する
+    あるいは s が ltc のキーにあるならば：
+        r に対応する大文字を追加する
+    いずれでもない場合：
+        r に s をそのまま追加する
+
+r を出力
+
+--ここまで逐語訳--
+--ここから解説--
+
+string -- 便利な文字列のセットが入ってるモジュール．
+from y import x -- y から x のみをインポートする．
+    あるモジュールから特定の変数や関数をインポートしたいときに便利．
+    すべてインポートする(from y import *) とすると使わない関数や変数までインポートしてしまうので，
+    限定的にインポートする方が処理の軽さ的にも良い．
+    import y とすると y の x という要素にアクセスするとき y.x と書かなくてはいけない
+    (例えばここでは string.ascii_lowercase と書かなくてはいけなくなる)ので
+    from string import ascii_lowercase としている．
+    ちなみに，from y import x as z とすると z として x を用いることができる．
+dict(<mapping object>) -- 解説を参照のこと．
+mapping object -- map関数で作ったオブジェクト．
+map() -- map(callable, *iterable) 
+    map() に関しては https://qiita.com/conf8o/items/0cb02bc504b51af09099 を参照．
+    iterable の前についている * については https://qiita.com/LouiS0616/items/1bbe0a9bb93054f6c380 を参照．
+
+
+平易な文字列処理の問題．
+ポイントは6行目と7行目の辞書の宣言の方法．
+dict()はmapping object を引数として渡すと，key: value のペアと
+    解釈して辞書を作ってくれる．
+予め標準モジュールのstringからASCII文字の小文字と大文字をインポートしておくと楽．
+
+あとは for 文で一文字ずつ処理すれば良い（文字列はイテラブルなので一つづつ取り出せる）．
+これは python の for 文がイテラブルの要素を一つづつ取り出して処理できるので簡単にできる．
