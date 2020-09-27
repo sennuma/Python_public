@@ -1,40 +1,69 @@
+src = r"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/all/ITP1_11_A"
+
+
 class Die:
     def __init__(self, faces: list):
-        self.top = faces[0]
-        self.front = faces[1]
-        self.right = faces[2]
-        self.left = faces[3]
-        self.back = faces[4]
-        self.bottom = faces[5]
+        self.faces = dict(
+            top=faces[0],
+            front=faces[1],
+            right=faces[2],
+            left=faces[3],
+            back=faces[4],
+            bottom=faces[5],
+        )
+
+    @staticmethod
+    def visiblefaces(self, f1, f2):
+        pass
 
     def rotate(self, direction):
         if direction == "S":
-            self.top, self.back, self.bottom, self.front = (
-                self.back,
-                self.bottom,
-                self.front,
-                self.top,
+            (
+                self.faces["top"],
+                self.faces["back"],
+                self.faces["bottom"],
+                self.faces["front"],
+            ) = (
+                self.faces["back"],
+                self.faces["bottom"],
+                self.faces["front"],
+                self.faces["top"],
             )
         elif direction == "N":
-            self.top, self.front, self.bottom, self.back = (
-                self.front,
-                self.bottom,
-                self.back,
-                self.top,
+            (
+                self.faces["top"],
+                self.faces["front"],
+                self.faces["bottom"],
+                self.faces["back"],
+            ) = (
+                self.faces["front"],
+                self.faces["bottom"],
+                self.faces["back"],
+                self.faces["top"],
             )
         elif direction == "E":
-            self.top, self.left, self.bottom, self.right = (
-                self.left,
-                self.bottom,
-                self.right,
-                self.top,
+            (
+                self.faces["top"],
+                self.faces["left"],
+                self.faces["bottom"],
+                self.faces["right"],
+            ) = (
+                self.faces["left"],
+                self.faces["bottom"],
+                self.faces["right"],
+                self.faces["top"],
             )
         else:  # direction == "W"
-            self.top, self.right, self.bottom, self.left = (
-                self.right,
-                self.bottom,
-                self.left,
-                self.top,
+            (
+                self.faces["top"],
+                self.faces["right"],
+                self.faces["bottom"],
+                self.faces["left"],
+            ) = (
+                self.faces["right"],
+                self.faces["bottom"],
+                self.faces["left"],
+                self.faces["top"],
             )
 
 
@@ -43,4 +72,4 @@ if __name__ == "__main__":
     commands = input()
     for command in commands:
         d.rotate(command)
-    print(d.top)
+    print(d.faces["top"])
