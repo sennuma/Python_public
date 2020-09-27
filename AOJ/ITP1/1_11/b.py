@@ -1,5 +1,10 @@
+<<<<<<< Updated upstream
 # src = r"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/all/ITP1_11_B"
 run = 0
+=======
+src = r"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/all/ITP1_11_A"
+dbg = 1
+>>>>>>> Stashed changes
 
 
 class Die:
@@ -15,6 +20,7 @@ class Die:
 
     def __str__(self):
         return str(self.faces)
+<<<<<<< Updated upstream
 
     def align(self, face, dest) -> None:
         if (face, dest) in list(
@@ -52,33 +58,14 @@ class Die:
             zip(["top", "left", "bottom", "right"], ["left", "bottom", "right", "top"])
         ):
             self.rotate("W")
+=======
+>>>>>>> Stashed changes
 
-    def visiblefaces(self, f=-1, t=-1, r=-1) -> str:
-        rev = {self.faces[k]: k for k in self.faces}
-        if f == -1:
-            for i in rev:
-                if t == i:
-                    self.align(rev[i], "top")
-            for i in rev:
-                if r == i:
-                    self.align(rev[i], "right")
-            return self.faces["front"]
-        elif t == -1:
-            for i in rev:
-                if f == i:
-                    self.align(rev[i], "front")
-            for i in rev:
-                if r == i:
-                    self.align(rev[i], "right")
-            return self.faces["top"]
-        elif r == -1:
-            for i in rev:
-                if f == i:
-                    self.align(rev[i], "front")
-            for i in rev:
-                if t == i:
-                    self.align(rev[i], "top")
-            return self.faces["right"]
+    def mtd(self, t, f):
+        if t == self.faces["top"]:
+            pass
+        elif t == self.faces["front"]:
+            pass
 
     def rotate(self, direction):
         if direction == "S":
@@ -117,7 +104,7 @@ class Die:
                 self.faces["right"],
                 self.faces["top"],
             )
-        elif direction == "W":
+        else:  # direction == "W"
             (
                 self.faces["top"],
                 self.faces["right"],
@@ -129,43 +116,23 @@ class Die:
                 self.faces["left"],
                 self.faces["top"],
             )
-        elif direction == "L":
-            (
-                self.faces["front"],
-                self.faces["right"],
-                self.faces["back"],
-                self.faces["left"],
-            ) = (
-                self.faces["right"],
-                self.faces["back"],
-                self.faces["left"],
-                self.faces["front"],
-            )
-        elif direction == "R":
-            (
-                self.faces["front"],
-                self.faces["left"],
-                self.faces["back"],
-                self.faces["right"],
-            ) = (
-                self.faces["left"],
-                self.faces["back"],
-                self.faces["right"],
-                self.faces["front"],
-            )
 
 
+<<<<<<< Updated upstream
 a = Die([1, 2, 3, 4, 5, 6])
 p = print
 
 if __name__ == "__main__" and run:
     from copy import copy
+=======
+if __name__ == "__main__" and not dbg:
+    d = Die(input().split())
+    commands = input()
+    for command in commands:
+        d.rotate(command)
+    print(d.faces["top"])
+>>>>>>> Stashed changes
 
-    results = []
-    d = Die(faces=input().split())
-    for i in range(int(input())):
-        dd = copy(d)
-        t, f = map(int, tuple(input().split()))
-        results.append(dd.visiblefaces(t=t, f=f))
-    for result in results:
-        print(result)
+if __name__ == "__main__" and dbg:
+    d = Die([1, 2, 3, 4, 5, 6])
+    p = print
