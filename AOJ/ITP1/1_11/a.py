@@ -12,9 +12,8 @@ class Die:
             bottom=faces[5],
         )
 
-    @staticmethod
-    def visiblefaces(self, f1, f2):
-        pass
+    def __str__(self):
+        return str(self.faces)
 
     def rotate(self, direction):
         if direction == "S":
