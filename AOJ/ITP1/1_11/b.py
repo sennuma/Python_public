@@ -1,5 +1,5 @@
 # src = r"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/all/ITP1_11_B"
-run = 1
+run = 0
 
 
 class Die:
@@ -12,6 +12,9 @@ class Die:
             back=faces[4],
             bottom=faces[5],
         )
+
+    def __str__(self):
+        return str(self.faces)
 
     def align(self, face, dest) -> None:
         if (face, dest) in list(
@@ -151,6 +154,9 @@ class Die:
                 self.faces["front"],
             )
 
+
+a = Die([1, 2, 3, 4, 5, 6])
+p = print
 
 if __name__ == "__main__" and run:
     from copy import copy
