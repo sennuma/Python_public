@@ -36,25 +36,25 @@ class Die:
         if direction == "S":
             (
                 self.faces["top"],
-                self.faces["back"],
-                self.faces["bottom"],
                 self.faces["front"],
+                self.faces["bottom"],
+                self.faces["back"],
             ) = (
-                self.faces["back"],
-                self.faces["bottom"],
                 self.faces["front"],
+                self.faces["bottom"],
+                self.faces["back"],
                 self.faces["top"],
             )
         elif direction == "N":
             (
                 self.faces["top"],
-                self.faces["front"],
-                self.faces["bottom"],
                 self.faces["back"],
+                self.faces["bottom"],
+                self.faces["front"],
             ) = (
-                self.faces["front"],
-                self.faces["bottom"],
                 self.faces["back"],
+                self.faces["bottom"],
+                self.faces["front"],
                 self.faces["top"],
             )
         elif direction == "E":
