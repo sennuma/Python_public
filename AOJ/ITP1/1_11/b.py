@@ -11,26 +11,11 @@ class Die:
             back=faces[4],
             bottom=faces[5],
         )
+        self.zo = "NNNRNNNRNNNRNNNENNNRNNN"
+        # 全探索用
 
     def __str__(self):
         return str(self.faces)
-
-    def tofrri(self, to, fr):
-        ri = 0
-        for _ in range(2):
-            for _ in range(3):
-                for _ in range(4):
-                    if self.issametopfro(to, fr):
-                        ri = self.faces["right"]
-                    self.rotate("R")
-                self.rotate("N")
-            self.rotate("R")
-            self.rotate("S")
-        return ri
-
-    def issametopfro(self, tp, fr):
-        if tp == self.faces["top"] and fr == self.faces["front"]:
-            return True
 
     def rotate(self, direction):
         if direction == "S":
@@ -108,4 +93,12 @@ class Die:
 
 
 # main
-d = Die([1, 2, 3, 4, 5, 6])
+d = Die(input().split())
+nq = int(input())
+r = []
+for i in range(nq):
+    to, fr = tuple(map(int, input().split()))
+    pass
+
+for i in r:
+    print(i)
