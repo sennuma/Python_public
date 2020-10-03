@@ -1,4 +1,4 @@
-src = r"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/all/ITP1_11_B"
+src = r"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/all/ITP1_11_C"
 
 
 class Die:
@@ -14,7 +14,7 @@ class Die:
 
     def rotate(self, d):
         """rotate the die to the given direction."""
-        if d not in "NEWSRL":
+        if d not in "NEWSLR":
             raise ValueError
         elif d == "S":
             (
@@ -108,13 +108,21 @@ class Die:
                 rt = e[2]
         return rt
 
+    def qsame(self, cmpd) -> bool:
+        """check if a given die is the same to the die"""
+        ss = self.alles()
+        cmpd = tuple(cmpd.faces.values())
+        for s in ss:
+            if s == cmpd:
+                return True
+        return False
+
+
+# ---- 処理 ----
 
 d = Die(list(map(int, input().split())))
-nq = int(input())
-results = []
-for _ in range(nq):
-    tp, ft = tuple(map(int, input().split()))
-    results.append(d._rt(tp, ft))
-
-for result in results:
-    print(result)
+c = Die(list(map(int, input().split())))
+if d.qsame(c):
+    print("Yes")
+else:
+    print("No")

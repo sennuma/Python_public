@@ -1,4 +1,4 @@
-src = r"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/all/ITP1_11_B"
+src = r"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/all/ITP1_11_D"
 
 
 class Die:
@@ -14,7 +14,7 @@ class Die:
 
     def rotate(self, d):
         """rotate the die to the given direction."""
-        if d not in "NEWSRL":
+        if d not in "NEWSLR":
             raise ValueError
         elif d == "S":
             (
@@ -108,13 +108,42 @@ class Die:
                 rt = e[2]
         return rt
 
+    def qsame(self, cmpd) -> bool:
+        """check if a given die is the same to the die"""
+        ss = self.alles()
+        cmpd = tuple(cmpd.faces.values())
+        for s in ss:
+            if s == cmpd:
+                return True
+        return False
 
-d = Die(list(map(int, input().split())))
-nq = int(input())
-results = []
-for _ in range(nq):
-    tp, ft = tuple(map(int, input().split()))
-    results.append(d._rt(tp, ft))
 
-for result in results:
-    print(result)
+def tmp(n) -> list:
+    """returns list of ints for indices."""
+    l = []
+    for i in range(1, n):
+        l.append(list(range(n - 1, i - 1, -1)))
+    return l
+
+
+# ---- 処理 ----
+
+n = int(input())
+dice = []
+for _ in range(n):
+    dice.append(Die(list(map(int, input().split()))))
+
+l = len(dice)
+s = dice[: l - 1]
+x = tmp(l)
+issame = False
+
+for i, j in zip(x, s):
+    for k in i:
+        if j.qsame(dice[k]):
+            issame = True
+
+if issame:
+    print("No")
+else:
+    print("Yes")
