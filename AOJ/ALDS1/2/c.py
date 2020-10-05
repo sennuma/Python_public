@@ -18,6 +18,11 @@ def selectionsort():
 # ---- process ----
 
 if __test:
-    pass
+    cards = "H4 C9 S4 D2 C3".split()
+    ss = [cards[i][0] for i in range(len(cards))]
+    ns = [cards[i][1] for i in range(len(cards))]
 else:
-    pass
+    input()
+    cards = input().split()
+    ss = [cards[i][0] for i in range(len(cards))]
+    ns = [cards[i][1] for i in range(len(cards))]
