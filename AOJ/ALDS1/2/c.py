@@ -18,14 +18,14 @@ def selectionsort(c) -> None:
     n = len(c)
     for i in range(n - 1):
         minj = i
-        for j in range(i, n - 1):
+        for j in range(i, n):
             if c[j][1] < c[minj][1]:
-                minj = i
+                minj = j
         c[i], c[minj] = c[minj], c[i]
 
 
 # ---- process ----
-__test = 1
+__test = 0
 if __test:
     cards = "H4 C9 S4 D2 C3".split()
     c1 = cards[:]
