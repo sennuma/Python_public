@@ -3,9 +3,16 @@ src = r"https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/ALDS1/2/ALDS1_2_D"
 # ---- solution ----
 
 
-def insertionsort(a, n, g):
-    cnt = 0
-    for i in range(g, n - 1):
+def insertionsort(a, g, c) -> int:
+    """
+    a ::= an array of the sorting target
+    g ::= a distance for distanced insertion sort
+    c ::= a variable for cnt
+
+    returns c
+    """
+    cnt, n = c, len(a)
+    for i in range(g, n):
         v = a[i]
         j = i - g
         while j >= 0 and a[j] > v:
@@ -13,42 +20,38 @@ def insertionsort(a, n, g):
             j = j - g
             cnt += 1
         a[j + g] = v
+    return cnt
 
 
-def shellsort(a, n) -> int:
-    cnt = 0
-    m = 0
-    g = ["?", "?", "...", "?"]
-    for i in range(0, m - 1):
-        insertionsort(a, n, g[i])
+def shellsort(a) -> tuple:
+    cnt, n = 0, len(a)
+    g, h = [], 0
+    while h <= n / 9:
+        h = 3 * h + 1
+        g.append(h)
+    g = tuple(g)
 
-
-def t(a):
-    l = len(a)
-    h = 1
-    while h < l / 9:
-        h = h * 3 + 1
-    while h > 0:
-        for i in range(h, l):
-            j = i
-            while j >= h and a[j - h] > a[j]:
-                a[j], a[j - h] = a[j - h], a[j]
-                j -= h
-        h = int(h / 3)
+    for i in reversed(g):
+        cnt = insertionsort(a, i, cnt)
+    return g, cnt
 
 
 # ---- process ----
 
-__test = 1
+__test = 0
 if __test:
-    pass
+    a = [5, 1, 4, 3, 2]
+    g, c = shellsort(a)
+    print(*reversed(g))
+    print(c)
 else:
     n = int(input())
-    A = [5, 1, 4, 3, 2]
+    a = []
     for i in range(n):
-        A.append(int(input()))
-    # print(int(m))
-    # print(*G)
-    # print(cnt)
-    # for i in range(n):
-    #     print(A[i])
+        a.append(int(input()))
+    g, c = shellsort(a)
+    print(len(g))  # as m
+    print(*reversed(g))
+    print(c)
+    for i in range(n):
+        print(a[i])
