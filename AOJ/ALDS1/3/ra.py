@@ -22,28 +22,14 @@ operators = "+-*"
 
 # ---- process ----
 
-__test = 0
-if __test:
-    o = "1000 500 132 + 132 - 2 * 100 10 10 * + - 50 50 50 50 + + + + 10 999 * + 24 + + 24 - 10 * 15000 -".split()
-    s = queue.LifoQueue()
-    for i in o:
-        if i not in operators:
-            s.put(int(i))
-        else:
-            o1 = s.get()
-            o2 = s.get()
-            s.put(rpn(o1, o2, i))
+o = input().split()
+s = queue.LifoQueue()
+for i in o:
+    if i not in operators:
+        s.put(int(i))
     else:
-        print(s.get())
+        o1 = s.get()
+        o2 = s.get()
+        s.put(rpn(o1, o2, i))
 else:
-    o = input().split()
-    s = queue.LifoQueue()
-    for i in o:
-        if i not in operators:
-            s.put(int(i))
-        else:
-            o1 = s.get()
-            o2 = s.get()
-            s.put(rpn(o1, o2, i))
-    else:
-        print(s.get())
+    print(s.get())

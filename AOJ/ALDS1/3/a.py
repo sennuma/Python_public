@@ -46,26 +46,14 @@ operators = "+-*"
 
 # ---- process ----
 
-__test = 1
-if __test:
-    stack = "1000 500 132 + 132 - 2 * 100 10 10 * + - 50 50 50 50 + + + + 10 999 * + 24 + + 24 - 10 * 15000 -".split()
-    s = Stack()
-    for i in stack:
-        if i not in operators:
-            s.push(int(i))
-        else:
-            o1 = s.pop()
-            o2 = s.pop()
-            s.push(rpn(o1, o2, i))
-    print(s.pop())
-else:
-    stack = input().split()
-    s = Stack()
-    for i in stack:
-        if i not in operators:
-            s.push(int(i))
-        else:
-            o1 = s.pop()
-            o2 = s.pop()
-            s.push(rpn(o1, o2, i))
-    print(s.pop())
+
+stack = input().split()
+s = Stack()
+for i in stack:
+    if i not in operators:
+        s.push(int(i))
+    else:
+        o1 = s.pop()
+        o2 = s.pop()
+        s.push(rpn(o1, o2, i))
+print(s.pop())
