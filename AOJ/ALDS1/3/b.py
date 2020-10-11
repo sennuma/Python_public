@@ -4,15 +4,39 @@ src = r"https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/ALDS1/3/ALDS1_3_B"
 
 
 class Queue:
-    def __init__(self, data=[]):
-        self.data = data
+    def __init__(self, maxsize):
+        """"""
+        self.max = maxsize
+        self.data = [[]] * maxsize
+        self.t, self.h = 0, 0
+
+    def isempty(self):
+        """"""
+        return self.t == self.h
+
+    def isfull(self):
+        """"""
+        return self.h == (self.t + 1) % self.max
 
     def enqueue(self, x):
-        self.data.append(x)
+        """"""
+        if self.isfull():
+            raise IndexError("Overflow; queue is full")
+        self.data[self.t] = x
+        if self.t + 1 == self.max:
+            self.t = 0
+        else:
+            self.t += 1
 
     def dequeue(self):
-        x = self.data[0]
-        self.data = self.data[1:]
+        """"""
+        if self.isempty():
+            raise IndexError("Underflow; queue is empty")
+        x = self.data[self.h]
+        if self.h + 1 == self.max:
+            self.h = 0
+        else:
+            self.h += 1
         return x
 
 
@@ -28,7 +52,7 @@ def donewithin(tgt, qt) -> tuple:
 # ---- process ----
 
 n, qt = tuple(map(int, input().split()))
-q = Queue()
+q = Queue(n + 1)
 for i in range(n):
     j = input().split()
     j[1] = int(j[1])
@@ -36,7 +60,10 @@ for i in range(n):
 
 pt = 0
 while not q.data == []:
-    t = q.dequeue()
+    try:
+        t = q.dequeue()
+    except IndexError:
+        break
     r = donewithin(t, qt)
     if not r[0]:
         q.enqueue(r[1])
