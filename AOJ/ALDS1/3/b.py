@@ -2,35 +2,45 @@ src = r"https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/ALDS1/3/ALDS1_3_B"
 
 # ---- solution ----
 
-from collections import OrderedDict as odict
-
 
 class Queue:
-    def __init__(self, data=odict()):
-        self.data = odict
+    def __init__(self, data=[]):
+        self.data = data
+
+    def enqueue(self, x):
+        self.data.append(x)
+
+    def dequeue(self):
+        x = self.data[0]
+        self.data = self.data[1:]
+        return x
+
+
+def donewithin(tgt, qt) -> tuple:
+    """check if task can be done within given qt
+    return (True, processed time) or (False, [tgt[0], rrt])"""
+    if tgt[1] <= qt:
+        return (True, tgt[1])
+    else:
+        return (False, [tgt[0], tgt[1] - qt])
 
 
 # ---- process ----
-__test = 1
 
-if __test:
-    stdin = """p1 150
-p2 80
-p3 200
-p4 350
-p5 20"""
-    n, qt = tuple(map(int, "5 100".split()))
-    d = odict()
-    for i in stdin.split("\n"):
-        s = i.split()
-        d[s[0]] = int(s[1])
+n, qt = tuple(map(int, input().split()))
+q = Queue()
+for i in range(n):
+    j = input().split()
+    j[1] = int(j[1])
+    q.enqueue(j)
 
-    q = Queue(d)
-else:
-    n, qt = tuple(map(int, input().split()))
-    d = odict()
-    for i in range(n):
-        s = input().split()
-        d[s[0]] = int(s[1])
-
-    queue = Queue(d)
+pt = 0
+while not q.data == []:
+    t = q.dequeue()
+    r = donewithin(t, qt)
+    if not r[0]:
+        q.enqueue(r[1])
+        pt += qt
+    elif r[0]:
+        pt += r[1]
+        print(t[0], pt)
