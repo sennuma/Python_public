@@ -1,0 +1,8 @@
+変数解説
+land: str :: 地形の記録．
+hs: list :: highs. "\" の座標．
+ls: list :: lows. 水たまりの情報．
+    ls[0]: int :: 各水たまりの面積．
+    ls[1]: int :: 水たまりの開始index.
+area: int :: 水たまりの総面積．
+i: int :: ループ用のindex.
