@@ -1,5 +1,5 @@
 import requests as req
-import random as rand
+from random import choice
 
 query = "%E5%8C%97%E6%B5%B7%E9%81%93"
 
@@ -21,7 +21,7 @@ def ynq(prompt):
         
 
 while 1:
-    question = rand.choice(cities_with_ruby)
+    question = choice(cities_with_ruby)
     reading = question[1]
     stdin = input(f"{question[0]} の読みは何でしょうか？ひらがなで答えてください．")
     if stdin == reading:
