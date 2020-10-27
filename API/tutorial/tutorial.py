@@ -35,4 +35,5 @@ while 1:
     else:
         print()
         print("また遊んでね！ created by: eq__s")
+        print("Credit: HeartRails")
         break
