@@ -12,7 +12,7 @@ def ynq(prompt):
     while 1:
         stdin = input(prompt)
         if stdin not in ["y", "n"]:
-            print(f"y か n を入力してください．")
+            print("y か n を入力してください．")
             continue
         elif stdin == "y":
             return True
