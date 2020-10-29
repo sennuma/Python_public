@@ -24,7 +24,7 @@ class GeoAPIInterface:
         Optimized for games.
     """
 
-    def __init__(self, prefecture):
+    def __init__(self, prefecture: str):
         """
         Fetch data of GeoAPI.
         """
@@ -67,7 +67,7 @@ def update_fetched_file(prefecture: str) -> None:
     Update fetched.json.
     """
     with open(".\\json\\fetched.json", encoding="utf8") as f:
-        d: dict = json.load(f)["fetched"]
+        d: list = json.load(f)
         d.append(prefecture)
     with open(".\\json\\fetched.json", mode="w", encoding="utf8") as f:
         json.dump(d, f, indent=2, ensure_ascii=False)
@@ -95,7 +95,7 @@ def hasfetched(prefecture: str) -> bool:
     """
     with open(".\\json\\fetched.json", encoding="utf8") as f:
         d = json.load(f)
-    if prefecture in d["fetched"]:
+    if prefecture in d:
         return True
     return False
 
@@ -107,7 +107,7 @@ def validate(arg: str) -> bool:
     import json
 
     with open(".\\json\\prefectures.json", encoding="utf8") as f:
-        prefectures = json.load(f)["prefectures"]
+        prefectures: list = json.load(f)
     if arg not in prefectures:
         return False
     return True

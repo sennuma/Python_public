@@ -26,12 +26,15 @@ def city_name_guesser(data: geoapi.GeoAPIInterface) -> None:
     print("終了するときは q を入力してください．\n")
 
     while 1:
+        if len(data.dataset) == 0:
+            print("すべて正解しました！おめでとう！")
+            break
         question, answer = choice(data.dataset)
-        response = input("「{}」の読みは何でしょうか？ひらがなで答えてください >>>".format(question))
+        response = input("「{}」の読みは何でしょうか？ひらがなで答えてください >>> ".format(question))
 
         if response == answer:
             print("正解！")
-            data.dataset.remove(question)
+            data.dataset.remove((question, answer))
             print("残りは{}問あります".format(len(data.dataset)))
         elif response == "q":
             break
