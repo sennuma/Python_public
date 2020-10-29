@@ -44,17 +44,4 @@ def end_game() -> None:
     """
     End the game showing credits and saying goodbye.
     """
-    pass
-
-
-def validate(arg: str) -> bool:
-    """
-    Check whether the prefecture is valid.
-    """
-    import json
-
-    with open(".\\json\\prefectures.json", encoding="utf8") as f:
-        prefectures = json.load(f)["prefectures"]
-    if arg not in prefectures:
-        return False
-    return True
+    print("Credits: HeartRails, @eq__s")
