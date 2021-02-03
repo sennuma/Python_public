@@ -32,6 +32,7 @@ class Phonetic_array_generator:
         necleus = EqUtils.strsample(self.vowels, self.conditions["vcluster_size"])
         coda = EqUtils.strsample(self.consonants, self.conditions["ccluster_size"])
         return onset + necleus + coda
+        # 日r本o語eは+２eバeイ トc文a字
 
 
 class EqUtils:

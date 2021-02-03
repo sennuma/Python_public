@@ -27,6 +27,9 @@ class AlcBev:
         Alcohol per price.
     """
 
+    def __str__(self):
+        return str(self.__dict__)
+
     def __init__(self, name: str, apv: int, vol: int, price: int):
         """
         Parameters
