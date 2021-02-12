@@ -5,6 +5,7 @@ from re import compile, Pattern
 
 
 def remtags(s: str, p: Pattern = compile(r"<.*?>")) -> str:
+    """remove HTML tags in a string."""
     r = p.search(s)
     if not r:
         return s
@@ -13,6 +14,7 @@ def remtags(s: str, p: Pattern = compile(r"<.*?>")) -> str:
 
 
 def remtags_in_list(l: list[str], p: Pattern = compile(r"<.*?>")) -> list:
+    """remove HTML tags in strings in a list."""
     r = []
     for i in l:
         r.append(remtags(i, p))
